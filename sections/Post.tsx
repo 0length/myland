@@ -17,11 +17,19 @@ export const Post = ({fadeStatus}: {fadeStatus: FadeStatus})=>{
         const page_id = toPageID(location.pathname.split("/post/")[1].split("-")[1]);
         console.log(page_id);
 
-        const notion = new Client({
-            auth: process.env.NOTION_TOKEN || "secret_KqlbkdS08YJ1y9U4u2HAUrzmIty4Ve023OZp87yuSXw",
-          })
-        const data = await notion.pages.retrieve({page_id})
-        console.log(data, page_id);
+        const auth= process.env.NOTION_TOKEN || "secret_KqlbkdS08YJ1y9U4u2HAUrzmIty4Ve023OZp87yuSXw";
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+          console.log( this.responseText)
+          };
+          xhttp.open("GET", "https://api.notion.com/v1/pages/"+page_id, true);
+          xhttp.setRequestHeader("Authorization", "Bearer " + auth);
+          xhttp.setRequestHeader("Content-type", "application/json");
+          xhttp.setRequestHeader("Notion-Version", "2021-05-13");
+        
+          xhttp.send(JSON.stringify({}))
+        // const data = await notion.pages.retrieve({page_id})
+        // console.log(data, page_id);
     }
     useEffect(()=>{
         fetchContent();
