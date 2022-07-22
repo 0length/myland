@@ -22,7 +22,7 @@ export const Post = ({fadeStatus}: {fadeStatus: FadeStatus})=>{
           xhttp.onreadystatechange = function() {
           console.log( this.responseText)
           };
-          xhttp.open("GET", "https://api.notion.com/v1/pages/"+page_id, true);
+          xhttp.open("GET", "https://cors.yasbr.com/https://api.notion.com/v1/pages/"+page_id, true);
           xhttp.setRequestHeader("Authorization", "Bearer " + auth);
           xhttp.setRequestHeader("Content-type", "application/json");
           xhttp.setRequestHeader("Notion-Version", "2021-05-13");
