@@ -1,0 +1,85 @@
+
+.firstHighlightCarouselWrapper {
+z-index: 2;
+position: absolute;
+top: 5vw;
+}
+
+
+
+.firstHighlightCarouselContainer {
+  width: 60vw;
+  padding: 0% 5%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.firstHighlightCarouselPosterContainer{
+  width: 30vw;
+  height: 35vw;
+  /* height: fit-content; */
+  border-radius: 0.5rem;
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.firstHighlightCarouselPosterContainerDiv{
+  /* background-color: rgb(124, 125, 140); */
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+}
+
+.firstHighlightCarouselPosterContainerDiv > * {
+  position: absolute;
+  display: flex;
+justify-content: center;
+}
+
+.firstHighlightCarouselPosterContainer > * {
+  height: 100%;
+  width: 100%;
+  align-self: flex-end;
+}
+
+.firstHighlightCarouselPosterTitle{
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+
+.firstHighlightCarouselPosterTitleDate{
+  opacity: 0.7;
+  align-self: center;
+}
+
+.firstHighlightCarouselPosterTitleDate > h3{
+  margin: auto 0;
+
+}
+
+.firstHighlightCarouselPosterImg {
+  margin-top: 10%;
+  height: 80%;
+  transition: 1s opacity ease-in-out;
+  width: auto;
+align-items: center;}
+
+.firstHighlightCarouselPosterImg:hover {
+  /* opacity: 0.15; */
+  /* filter: blur(); */
+}
+
+
+
+/* .firstHighlightCarouselPosterOption {
+  position: absolute;
+  opacity: 0;
+}
+.firstHighlightCarouselPosterOption:hover {
+  opacity: 0.75;
+
+} */
