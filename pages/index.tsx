@@ -28,7 +28,7 @@ function debounce(callback: ()=>void, wait: number) {
 export type FadeStatus = "fadeInUp" | "fadeOutUp" | "fadeInDown" | "fadeOutDown";
 
 export const CreatePage: (initPage: keyof typeof sectionData) =>NextPage = (initPage: keyof typeof sectionData) => 
-  function NextPageCreation() {
+  function NextPageCreation(props: {data: any}) {
     const [toRightNavMenu, setToRIghtNavMenu] = useState(true)
     const [pageSection, setPageSection] = useState<keyof typeof sectionData>(initPage)
     const menuRef = useRef(null);
@@ -111,7 +111,7 @@ export const CreatePage: (initPage: keyof typeof sectionData) =>NextPage = (init
         <header>
           <div className="container">
             <div className="menu">
-              <img src="./logo.png" alt="" />
+              <img src="/logo.png" alt="" />
               <span ref={menuRef} className='potraitWidth60percent'>
                 <a className="active" data-section={homePath} onClick={handleSectionChange}>Home</a>
                 <a data-section={"stat"} onClick={handleSectionChange}>Stats</a>
@@ -126,7 +126,9 @@ export const CreatePage: (initPage: keyof typeof sectionData) =>NextPage = (init
           <main className={styles.main}>
             <section>
               <ActiveSection
-                fadeStatus={fadeStatus} />
+                fadeStatus={fadeStatus}
+                data={props.data}
+                 />
             </section>
           </main>
         </div>
