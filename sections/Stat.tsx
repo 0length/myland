@@ -270,14 +270,6 @@ export const Stat = ({fadeStatus}: {fadeStatus: FadeStatus})=>{
   </svg>
 
   `)
-    const handleFetch = async ()=>{
 
-        setTopLang(await (await fetch("http://github-readme-stats.vercel.app/api/top-langs?username=0length&count_private=true",  {
-        
-    })).text())
-    }
-    useEffect( ()=>{
-        handleFetch();
-    }, [])
     return <div className={fadeStatus} style={{display:"flex", alignContent: "center", justifyContent: "center", height:"100%",width: "100%"}} dangerouslySetInnerHTML={{__html: topLang}}></div>
 }
