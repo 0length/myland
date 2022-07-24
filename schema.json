@@ -1,0 +1,251 @@
+{
+    "object": "list",
+    "results": [
+        {
+            "object": "block",
+            "id": "a0111a39-f4aa-4b4d-aca2-2692ac1df036",
+            "parent": {
+                "type": "page_id",
+                "page_id": "b0811b5a-621c-4d75-b312-35aaeef40671"
+            },
+            "created_time": "2021-07-16T15:10:00.000Z",
+            "last_edited_time": "2021-07-16T15:23:00.000Z",
+            "created_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "last_edited_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "has_children": false,
+            "archived": false,
+            "type": "paragraph",
+            "paragraph": {
+                "rich_text": [
+                    {
+                        "type": "text",
+                        "text": {
+                            "content": "https://www.electronjs.org",
+                            "link": {
+                                "url": "https://www.electronjs.org/"
+                            }
+                        },
+                        "annotations": {
+                            "bold": false,
+                            "italic": false,
+                            "strikethrough": false,
+                            "underline": false,
+                            "code": false,
+                            "color": "default"
+                        },
+                        "plain_text": "https://www.electronjs.org",
+                        "href": "https://www.electronjs.org/"
+                    }
+                ],
+                "color": "default"
+            }
+        },
+        {
+            "object": "block",
+            "id": "103b362f-c87f-481a-8e18-fdeeb8372ee4",
+            "parent": {
+                "type": "page_id",
+                "page_id": "b0811b5a-621c-4d75-b312-35aaeef40671"
+            },
+            "created_time": "2021-07-16T15:23:00.000Z",
+            "last_edited_time": "2021-08-21T06:43:00.000Z",
+            "created_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "last_edited_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "has_children": true,
+            "archived": false,
+            "type": "toggle",
+            "toggle": {
+                "rich_text": [
+                    {
+                        "type": "text",
+                        "text": {
+                            "content": "Tag line (Semboyan) : ",
+                            "link": null
+                        },
+                        "annotations": {
+                            "bold": false,
+                            "italic": false,
+                            "strikethrough": false,
+                            "underline": false,
+                            "code": false,
+                            "color": "default"
+                        },
+                        "plain_text": "Tag line (Semboyan) : ",
+                        "href": null
+                    }
+                ],
+                "color": "default"
+            }
+        },
+        {
+            "object": "block",
+            "id": "9c2f9c42-161c-4021-b433-5d1408673977",
+            "parent": {
+                "type": "page_id",
+                "page_id": "b0811b5a-621c-4d75-b312-35aaeef40671"
+            },
+            "created_time": "2021-08-21T06:39:00.000Z",
+            "last_edited_time": "2021-08-21T06:43:00.000Z",
+            "created_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "last_edited_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "has_children": true,
+            "archived": false,
+            "type": "toggle",
+            "toggle": {
+                "rich_text": [
+                    {
+                        "type": "text",
+                        "text": {
+                            "content": "Testimoni",
+                            "link": null
+                        },
+                        "annotations": {
+                            "bold": false,
+                            "italic": false,
+                            "strikethrough": false,
+                            "underline": false,
+                            "code": false,
+                            "color": "default"
+                        },
+                        "plain_text": "Testimoni",
+                        "href": null
+                    }
+                ],
+                "color": "default"
+            }
+        },
+        {
+            "object": "block",
+            "id": "55f580af-29d6-47b3-83c2-51890048c9ab",
+            "parent": {
+                "type": "page_id",
+                "page_id": "b0811b5a-621c-4d75-b312-35aaeef40671"
+            },
+            "created_time": "2021-07-16T15:26:00.000Z",
+            "last_edited_time": "2021-07-16T15:34:00.000Z",
+            "created_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "last_edited_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "has_children": true,
+            "archived": false,
+            "type": "toggle",
+            "toggle": {
+                "rich_text": [
+                    {
+                        "type": "text",
+                        "text": {
+                            "content": "Major Benefit (Keunggulan Utama) :",
+                            "link": null
+                        },
+                        "annotations": {
+                            "bold": false,
+                            "italic": false,
+                            "strikethrough": false,
+                            "underline": false,
+                            "code": false,
+                            "color": "default"
+                        },
+                        "plain_text": "Major Benefit (Keunggulan Utama) :",
+                        "href": null
+                    }
+                ],
+                "color": "default"
+            }
+        },
+        {
+            "object": "block",
+            "id": "c59d1cd3-0fa0-40a0-94ad-c03be121db64",
+            "parent": {
+                "type": "page_id",
+                "page_id": "b0811b5a-621c-4d75-b312-35aaeef40671"
+            },
+            "created_time": "2021-07-16T15:27:00.000Z",
+            "last_edited_time": "2021-08-21T06:38:00.000Z",
+            "created_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "last_edited_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "has_children": true,
+            "archived": false,
+            "type": "toggle",
+            "toggle": {
+                "rich_text": [
+                    {
+                        "type": "text",
+                        "text": {
+                            "content": "Other Benefit (Keungulan Lainnya) :",
+                            "link": null
+                        },
+                        "annotations": {
+                            "bold": false,
+                            "italic": false,
+                            "strikethrough": false,
+                            "underline": false,
+                            "code": false,
+                            "color": "default"
+                        },
+                        "plain_text": "Other Benefit (Keungulan Lainnya) :",
+                        "href": null
+                    }
+                ],
+                "color": "default"
+            }
+        },
+        {
+            "object": "block",
+            "id": "c3d1e8e3-dbff-4966-908a-f42b8b134d04",
+            "parent": {
+                "type": "page_id",
+                "page_id": "b0811b5a-621c-4d75-b312-35aaeef40671"
+            },
+            "created_time": "2021-08-21T06:43:00.000Z",
+            "last_edited_time": "2021-08-21T06:43:00.000Z",
+            "created_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "last_edited_by": {
+                "object": "user",
+                "id": "1a3f6ec4-361d-459f-b5a7-db4753f337ef"
+            },
+            "has_children": false,
+            "archived": false,
+            "type": "paragraph",
+            "paragraph": {
+                "rich_text": [],
+                "color": "default"
+            }
+        }
+    ],
+    "next_cursor": null,
+    "has_more": false,
+    "type": "block",
+    "block": {}
+}

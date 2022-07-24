@@ -126,15 +126,15 @@ code>img {
 
 }
 
-.option-icons>i {
+.option-icons i {
   justify-content: space-between;
   padding: 10px 20px;
 }
-.option-icons>i:hover {
+.option-icons i:hover {
   background-color: black;
 }
 
-.option-icons>i:active {
+.option-icons i:active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -300,4 +300,12 @@ code>img {
 @keyframes zoom {
   from {transform: scale(0.1)} 
   to {transform: scale(1)}
+}
+
+.active-menu {
+ color: rgba(137, 221, 255, 0.4)
+}
+
+.stats > *{
+  margin: 10px;
 }

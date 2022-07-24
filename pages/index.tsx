@@ -2,17 +2,17 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
-import { Contribution } from '../sections/Contribution'
 import { First } from '../sections/First'
 import { Stat } from '../sections/Stat'
-import { Post } from '../sections/Post'
+import { Blog } from '../sections/Blog'
+import { About } from '../sections/About'
 
 const homePath = "home"
 const sectionData = {
   [homePath]: First,
   "stat": Stat,
-  "post": Post,
-  "contribution": Contribution,
+  "blog": Blog,
+  "about": About,
 }
 
 function debounce(callback: ()=>void, wait: number) {
@@ -28,11 +28,11 @@ function debounce(callback: ()=>void, wait: number) {
 export type FadeStatus = "fadeInUp" | "fadeOutUp" | "fadeInDown" | "fadeOutDown";
 
 export const CreatePage: (initPage: keyof typeof sectionData) =>NextPage = (initPage: keyof typeof sectionData) => 
-  function NextPageCreation(props: {data: any}) {
+  function NextPageCreation(props) {
     const [toRightNavMenu, setToRIghtNavMenu] = useState(true)
     const [pageSection, setPageSection] = useState<keyof typeof sectionData>(initPage)
     const menuRef = useRef(null);
-  
+    const {data} =  props as {data: any}
     const handleScrollMenu = () => {
       console.log(menuRef.current)
       menuRef.current && (menuRef.current as any).scrollTo({ left: toRightNavMenu ? (menuRef.current as any).scrollWidth : 0, behavior: 'smooth' })
@@ -88,17 +88,24 @@ export const CreatePage: (initPage: keyof typeof sectionData) =>NextPage = (init
     }, [pageSection]);
 
     useEffect(() => {
-      bodyRef.current && (bodyRef.current as any).addEventListener("scroll", handleScroll, { passive: true })
+      // bodyRef.current && (bodyRef.current as any).addEventListener("scroll", handleScroll, { passive: true })
 
       menuRef.current && (menuRef.current as any).addEventListener("scroll", handleScrollMenuState, { passive: true })
 
       return () => {
-      bodyRef.current && (bodyRef.current as any).removeEventListener("scroll", handleScroll)
+      // bodyRef.current && (bodyRef.current as any).removeEventListener("scroll", handleScroll)
         menuRef.current && (menuRef.current as any).removeEventListener("scroll", handleScrollMenuState)
       }
 
+    }, []);
 
-    }, [])
+    useEffect(()=>{
+      document.querySelectorAll(`.menu a`).forEach((item)=>item.classList.remove('active-menu'))
+      if(typeof location !==undefined){
+        document.querySelector(`.menu a[data-section="${pageSection}"]`)?.classList.add("active-menu")
+      }
+    }, [pageSection])
+
     return (
       <div ref={bodyRef} className={styles.bodyContainer}>
         <Head>
@@ -113,10 +120,10 @@ export const CreatePage: (initPage: keyof typeof sectionData) =>NextPage = (init
             <div className="menu">
               <img src="/logo.png" alt="" />
               <span ref={menuRef} className='potraitWidth60percent'>
-                <a className="active" data-section={homePath} onClick={handleSectionChange}>Home</a>
+                <a data-section={homePath} onClick={handleSectionChange}>Home</a>
                 <a data-section={"stat"} onClick={handleSectionChange}>Stats</a>
-                <a data-section={"post"} onClick={handleSectionChange}>Post</a>
-                <a data-section={"contribution"} onClick={handleSectionChange}>Contribution</a>
+                <a data-section={"blog"} onClick={handleSectionChange}>Blog</a>
+                <a data-section={"about"} onClick={handleSectionChange}>About</a>
               </span>
               <i onClick={handleScrollMenu} className={" material-icons potritDisplayFlex"} style={{ alignSelf: 'center', display: 'none' }}>{toRightNavMenu ? "navigate_next" : "navigate_before"}</i>
             </div>
@@ -127,7 +134,7 @@ export const CreatePage: (initPage: keyof typeof sectionData) =>NextPage = (init
             <section>
               <ActiveSection
                 fadeStatus={fadeStatus}
-                data={props.data}
+                data={data}
                  />
             </section>
           </main>

@@ -5,12 +5,9 @@ import styles from '../styles/Home.module.css';
 export const Contribution = ({ fadeStatus }: { fadeStatus: FadeStatus }) => {
 
     return <>
-        <div style={{ display: "flex",flexDirection:"column", alignContent: "center", justifyContent: "center", height: "100%", width: "100%" }}>
-
-            <h1 id="contribution" className={styles.title.concat(" " + fadeStatus)}>Contribution</h1>
-
+        <div style={{ display: "flex",flexDirection:"column", alignContent: "center", justifyContent: "center", width: "100%" }}>
             <h3 className={styles.description.concat(" " + fadeStatus)}>
-                Opensource project.
+               Contribute to Opensource
             </h3>
 
             <span className={styles.projectItem.concat(" ").concat("grid").concat(" " + fadeStatus)}>

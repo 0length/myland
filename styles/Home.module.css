@@ -102,11 +102,10 @@
 .description {
   margin: 4rem 0;
   line-height: 1.5;
-  font-size: 1.5rem;
 }
 
 .projectItem > a {
-  margin: 2vw 5vw;
+  margin: 1vw 2vw;
 }
 
 .code {

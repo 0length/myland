@@ -23,8 +23,8 @@ const fetchContent = (url: string)=>{
         page_size: 500,
       });
 }
-const Post = CreatePage("post")
-Post.getInitialProps = async (ctx): Promise<{}> => {
+const Blog = CreatePage("blog")
+Blog.getInitialProps = async (ctx): Promise<{}> => {
     const props: { [index: string]: any } = {};
     if (typeof window === 'undefined' && ctx.req?.url) {
       console.log('preFetchingData', ctx.req.url);
@@ -32,8 +32,7 @@ Post.getInitialProps = async (ctx): Promise<{}> => {
     } else {
       console.log('CSR, will have useEffect and loader to populate');
     }
-    console.log('finalProps', props);
     return props;
   };
 
-export default Post
+export default Blog

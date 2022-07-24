@@ -8,15 +8,12 @@ let animateDurPlain = 2;
 let animateDurMS = animateDurPlain * 1000;
 let data = [
     {
-        title: "Electron Desktop Application Development",
+        title: "Introducing electron desktop app development",
         date: "2022-02-04 13:17:05",
-        img_url: "./masterpiece/desktop-app-shimmer.gif"
+        img_url: "./masterpiece/desktop-app-shimmer.gif",
+        block_id: ""
     },
-    // {
-    //     title: "Electron desktop application 2",
-    //     date: "2020-02-04 14:17:05",
-    //     img_url: "./masterpiece/desktop_app_skeleton_load.gif"
-    // },
+
 ];
 export const Carousel = ({ className }: { className: string }) => {
 
@@ -60,8 +57,12 @@ export const Carousel = ({ className }: { className: string }) => {
                             {data.length > 1 && <i className={" material-icons"} style={!showOption ? { opacity: 0.15 } : { opacity: 1, zIndex: 2 }}>navigate_before</i>}
 
                             <i className={" material-icons"} onClick={handleZoom} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '18px' }}>zoom_out_map</i>
-                            <i className={" material-icons"} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>fullscreen</i>
-                            <i className={" material-icons"} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '20px' }}>open_in_new</i>
+                            <a href={"/blog/" + data[active].block_id} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>
+                                <i className={" material-icons"} >fullscreen</i>
+                            </a>
+                            <a rel="noreferrer" href={"/blog/" + data[active].block_id} target="_blank" style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '20px' }}>
+                                <i className={" material-icons"} >open_in_new</i>
+                            </a>
                             {data.length > 1 && <i className={" material-icons"} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>navigate_next</i>}
                         </div>
                     </div>
@@ -81,7 +82,7 @@ export const Carousel = ({ className }: { className: string }) => {
             </div>
         </div>
         <div className="modal-image-zoom">
-            <i onClick={()=>{
+            <i onClick={() => {
                 (document.querySelector('div.modal-image-zoom') as any).style.display = "none"
             }} className="material-icons modal-image-zoom-close">close</i>
             <img className="modal-image-zoom-content" />
