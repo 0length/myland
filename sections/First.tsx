@@ -6,9 +6,13 @@ export const First = ({fadeStatus}: {fadeStatus: FadeStatus}) => {
     return <>
      {/* @ts-ignore */}
      <marquee className={styles.firsMarquee.concat(" ").concat("potritDisplayNone ")} behavior="" direction="left">{"Classy web developer who wants to learn, create, earn and share".toUpperCase()}</marquee>
+            <style>{`section{
+                height: 80%;
+              }`
+              }</style>
             <Carousel className={" ".concat(" "+fadeStatus)}/>
             <div className={styles.firstImgContainer.concat(" ").concat("potritDisplayNone ")}>
-              <img src="./photo/2.jpg" alt="" className={styles.firstImg.concat(" "+fadeStatus)} />
+              <img src="/photo/2.jpg" alt="" className={styles.firstImg.concat(" "+fadeStatus)} />
             </div>
     </>
 }

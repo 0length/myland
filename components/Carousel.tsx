@@ -10,8 +10,8 @@ let data = [
     {
         title: "Introducing electron desktop app development",
         date: "2022-02-04 13:17:05",
-        img_url: "./masterpiece/desktop-app-shimmer.gif",
-        block_id: ""
+        img_url: "/masterpiece/desktop-app-shimmer.gif",
+        block_id: "Intro-b0811b5a621c4d75b31235aaeef40671"
     },
 
 ];

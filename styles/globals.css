@@ -105,7 +105,6 @@ section {
   width: 100%;
   padding: 5vw 0;
   /* position: relative; */
-  height: 80vh;
   margin-top: 100px;
 }
 
@@ -308,4 +307,21 @@ code>img {
 
 .stats > *{
   margin: 10px;
+}
+
+section .notion, section .notion-cover {
+  width: 90%;
+  color: white;
+  max-height: fit-content;
+}
+section .notion-cover{
+  width: 100%;
+min-height: 30vh;
+background-size: cover;
+}
+
+section .avatar {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
