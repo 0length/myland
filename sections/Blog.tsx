@@ -24,7 +24,7 @@ function shareOnFacebook(){
   }
 export const Blog = ({ fadeStatus, data }: PageWithData) => {
   useEffect(() => {
-    console.log(data.firstChild);
+    // console.log(data.firstChild);
   }, []);
   return (
     <div
