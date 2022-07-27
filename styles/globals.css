@@ -262,7 +262,7 @@ code>img {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 25; /* Sit on top */
-  padding-top: 500px; /* Location of the box */
+  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -288,8 +288,8 @@ code>img {
 /* The Close Button */
 .modal-image-zoom-close {
   position: fixed;
-  top: 15px;
-  right: 35px;
+  top: 50px;
+  right: 50px;
   color: #f1f1f1;
   font-size: 40px;
   font-weight: bold;
