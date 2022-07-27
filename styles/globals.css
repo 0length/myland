@@ -262,7 +262,7 @@ code>img {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 25; /* Sit on top */
-  padding-top: 200px; /* Location of the box */
+  padding-top: 500px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -295,6 +295,8 @@ code>img {
   font-weight: bold;
   transition: 0.3s;
   z-index: 30;
+  width: 100px;
+  height: 100px;
 }
 
 @keyframes zoom {
