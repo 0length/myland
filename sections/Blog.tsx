@@ -27,11 +27,10 @@ function shareOnLinkedin() {
 }
 export const Blog = ({ fadeStatus, data }: PageWithData) => {
   const { route } = useRouter();
+  if(!data) return <span style={{ alignSelf: "center" }}>{"Cooming Soon!"}</span>;
   const postTitle = data.firstChild.results[0].heading_1.rich_text[0].text.content;
   const postCover = data.page.cover.external.url;
-  useEffect(() => {
-    // console.log(data.firstChild);
-  }, []);
+
   return (
     <div
       className={fadeStatus}
@@ -43,9 +42,7 @@ export const Blog = ({ fadeStatus, data }: PageWithData) => {
         width: "100%",
       }}
     >
-      {!data ? (
-        <span style={{ alignSelf: "center" }}>{"Cooming Soon!"}</span>
-      ) : (
+      
         <>
           <Head>
             <title>{data.block.child_page.title}</title>
@@ -113,7 +110,6 @@ export const Blog = ({ fadeStatus, data }: PageWithData) => {
           </div>
           <NotionRenderer blockMap={data.content} />
         </>
-      )}
     </div>
   );
 };
