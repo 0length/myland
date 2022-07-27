@@ -34,7 +34,7 @@ useEffect(()=>{
     <div className="avatar">
         <img style={{borderRadius: "50% 50%"}} alt="" width="260" height="260" src="https://avatars.githubusercontent.com/u/31953472?v=4"/>
         </div>
-        <div className={fadeStatus} dangerouslySetInnerHTML={{__html: readme}} style={{ display: "flex",flexDirection:"column", alignItems: "center", justifyContent: "center", width: "100%" }}>
+        <div className={fadeStatus} dangerouslySetInnerHTML={{__html: readme}} style={{ display: "flex",flexDirection:"column", alignItems: "center", justifyContent: "center", width: "90%" }}>
         </div>
         <div style={{ display: "flex",flexDirection:"column", alignContent: "center", justifyContent: "center", width: "100%" }}>
         </div>
