@@ -7,22 +7,28 @@ import { NotionRenderer } from "react-notion";
 import { TimeDisplay } from "../components/TimeDisplay";
 import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export type PageWithData = { fadeStatus: FadeStatus; data: any };
-function shareOnFacebook(){
-    const navUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + location.href;
-    window.open(navUrl , '_blank');
-  }
-  function shareOnTwitter() {
-    const navUrl =
-      'https://twitter.com/intent/tweet?text=' +
-      location.href;
-    window.open(navUrl, '_blank');
-  }
-  function shareOnLinkedin(){
-    window.open("https://www.linkedin.com/shareArticle?text=hello&url="+location.href,   'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
-  }
+function shareOnFacebook() {
+  const navUrl =
+    "https://www.facebook.com/sharer/sharer.php?u=" + location.href;
+  window.open(navUrl, "_blank");
+}
+function shareOnTwitter() {
+  const navUrl = "https://twitter.com/intent/tweet?text=" + location.href;
+  window.open(navUrl, "_blank");
+}
+function shareOnLinkedin() {
+  window.open(
+    "https://www.linkedin.com/shareArticle?text=hello&url=" + location.href,
+    "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600"
+  );
+}
 export const Blog = ({ fadeStatus, data }: PageWithData) => {
+  const { route } = useRouter();
+  const postTitle = data.firstChild.results[0].heading_1.rich_text[0].text.content;
+  const postCover = data.page.cover.external.url;
   useEffect(() => {
     // console.log(data.firstChild);
   }, []);
@@ -41,14 +47,42 @@ export const Blog = ({ fadeStatus, data }: PageWithData) => {
         <span style={{ alignSelf: "center" }}>{"Cooming Soon!"}</span>
       ) : (
         <>
-            <Head>
-          <title>{data.block.child_page.title}</title>
-          <meta name="description" content={data.firstChild.results[0].heading_1.rich_text[0].text.content} />
-        </Head>
+          <Head>
+            <title>{data.block.child_page.title}</title>
+            <meta
+              name="description"
+              content={
+                postTitle
+              }
+            />
+            <meta
+              property="og:title"
+              content={
+                postTitle
+              }
+            />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={route} />
+            <meta property="og:image" content={postCover} />
+            <meta
+              name="twitter:title"
+              content={data.block.child_page.title}
+            />
+            <meta
+              name="twitter:description"
+              content={
+                postTitle
+              }            />
+            <meta
+              name="twitter:image"
+              content={postCover}
+            />
+            <meta name="twitter:card" content="summary_large_image"></meta>
+          </Head>
           <div
             className="notion-cover"
             style={{
-              background: `url('${data.page.cover.external.url}') no-repeat center center fixed`,
+              background: `url('${postCover}') no-repeat center center fixed`,
             }}
           ></div>
           <div className="post-header">
