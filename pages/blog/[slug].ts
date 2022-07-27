@@ -2,16 +2,6 @@ import { Client } from "@notionhq/client";
 import { CreatePage } from "..";
 const FIRST_PATH = "blog";
 
-(String.prototype as any).insert = function (index: number, string: string) {
-  if (index > 0) {
-    return this.substring(0, index) + string + this.substr(index);
-  }
-
-  return string + this;
-};
-// @ts-ignore
-const toPageID = (string: string) =>
-  string.insert(8, "-").insert(13, "-").insert(18, "-").insert(23, "-");
 const fetchContent = async (url: string) => {
   const toBlockId = (a: string) => a.split("-")[a.split("-").length - 1];
   const block_id_not_found = toBlockId(
