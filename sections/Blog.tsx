@@ -6,6 +6,7 @@ import "prismjs/themes/prism-tomorrow.css"; // only needed for code highlighting
 import { NotionRenderer } from "react-notion";
 import { TimeDisplay } from "../components/TimeDisplay";
 import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
+import Head from "next/head";
 
 export type PageWithData = { fadeStatus: FadeStatus; data: any };
 function shareOnFacebook(){
@@ -23,7 +24,7 @@ function shareOnFacebook(){
   }
 export const Blog = ({ fadeStatus, data }: PageWithData) => {
   useEffect(() => {
-    console.log(data.page);
+    console.log(data.firstChild);
   }, []);
   return (
     <div
@@ -40,6 +41,10 @@ export const Blog = ({ fadeStatus, data }: PageWithData) => {
         <span style={{ alignSelf: "center" }}>{"Cooming Soon!"}</span>
       ) : (
         <>
+            <Head>
+          <title>{data.block.child_page.title}</title>
+          <meta name="description" content={data.firstChild.results[0].heading_1.rich_text[0].text.content} />
+        </Head>
           <div
             className="notion-cover"
             style={{
@@ -66,7 +71,7 @@ export const Blog = ({ fadeStatus, data }: PageWithData) => {
                 <span onClick={shareOnFacebook}>
                   <FaFacebookF />
                 </span>
-                <span>
+                <span onClick={shareOnLinkedin}>
                   <FaLinkedin />
                 </span>
               </div>

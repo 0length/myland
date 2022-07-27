@@ -6,6 +6,7 @@ import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 import matter from 'gray-matter';
 import { unified } from 'unified'
+import Head from 'next/head';
 
 export const retrieveReadme = async ()=>{
     const md = await (await (await fetch("https://raw.githubusercontent.com/0length/0length/main/README.md")).text());
@@ -31,6 +32,10 @@ useEffect(()=>{
 }, []);
 
     return <>
+    <Head>
+          <title>{"About Me"}</title>
+          <meta name="description" content="About me and how to contact me." />
+        </Head>
     <div className="avatar">
         <img style={{borderRadius: "50% 50%"}} alt="" width="260" height="260" src="https://avatars.githubusercontent.com/u/31953472?v=4"/>
         </div>
