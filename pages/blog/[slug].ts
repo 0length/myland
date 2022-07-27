@@ -32,7 +32,9 @@ const fetchContent = async (url: string)=>{
           }
         }))).json());
         // console.log(page)
-      return {page, content};
+        const author = await notion.users.retrieve({user_id: (page as any).created_by.id})
+        console.log(author)
+      return {page, content, author};
     } catch (error) {
 
       const page =  await notion.pages.retrieve({page_id: block_id_not_found});
@@ -44,8 +46,10 @@ const fetchContent = async (url: string)=>{
             Authorization: "secret_KqlbkdS08YJ1y9U4u2HAUrzmIty4Ve023OZp87yuSXw"
           }
         }))).json());
-        // console.log(page)
-      return {page, content};    }
+        const author = await notion.users.retrieve({user_id: (page as any).created_by.id})
+        console.log(author)
+      return {page, content};
+    }
 }
 
 const Blog = CreatePage(FIRST_PATH)
@@ -57,7 +61,7 @@ Blog.getInitialProps = async (ctx): Promise<{}> => {
     } else {
       console.log('CSR, will have useEffect and loader to populate');
     }
-    // console.log(props)
+    // console.log(props.data)
     return props;
   };
 

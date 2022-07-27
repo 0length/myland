@@ -109,7 +109,7 @@ section {
 }
 
 code {
-  display: flex;
+  display: inline-block;
   color: rgb(24, 25, 40);
   vertical-align: top;
   /* margin: 20px 40px; */
@@ -147,6 +147,10 @@ code>img {
 @media only screen and (max-width: 680px) {
   .potrait100percent {
     width: 100% !important;
+  }
+
+  header>.container>.menu span {
+    margin-left: 5vw;
   }
 
   .potraitWidth60percent {
@@ -327,4 +331,50 @@ section .avatar {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+.post-header{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: 80px;
+  padding: 20px 0px;
+  align-items: center;
+}
+.author {
+  display: flex;
+  width: 30%;
+}
+.author-avatar {
+  display: inline-block;
+}
+
+.author-avatar img {
+  width:40px;
+  height:40px;
+  border-radius: 50% 50%;
+}
+
+.author-detail {
+  display: inline-block;
+  margin: auto;
+  margin-left: 10px;
+  height: 100%;
+}
+
+.author-detail .author-name {
+  margin: auto;
+}
+.post-date{
+  font-size: small;
+  opacity: 0.8;
+}
+.share {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+}
+.share span{
+  padding: 10px 10px;
+  cursor: pointer;
 }
