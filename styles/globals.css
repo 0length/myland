@@ -294,7 +294,7 @@ code>img {
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;
-  z-index: 20;
+  z-index: 30;
 }
 
 @keyframes zoom {
