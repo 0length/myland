@@ -6,16 +6,8 @@ let timer: any, animate: any;
 let timeout = 5000;
 let animateDurPlain = 2;
 let animateDurMS = animateDurPlain * 1000;
-let data = [
-    {
-        title: "Introducing electron desktop app development",
-        date: "2022-02-04 13:17:05",
-        img_url: "/masterpiece/desktop-app-shimmer.gif",
-        block_id: "Intro-b0811b5a621c4d75b31235aaeef40671"
-    },
 
-];
-export const Carousel = ({ className }: { className: string }) => {
+export const Carousel = ({ className, data }: { className: string, data: any }) => {
 
     const [active, setActive] = useState<number>(0);
     const [showOption, setShowOption] = useState(false);
@@ -25,6 +17,7 @@ export const Carousel = ({ className }: { className: string }) => {
         // animate = setTimeout(() => {
 
         // }, timeout-animateDurMS);
+
         timer = setTimeout(() => {
             setActive(active + 1 === data.length ? 0 : active + 1);
         }, timeout);
@@ -57,10 +50,10 @@ export const Carousel = ({ className }: { className: string }) => {
                             {data.length > 1 && <i className={" material-icons"} style={!showOption ? { opacity: 0.15 } : { opacity: 1, zIndex: 2 }}>navigate_before</i>}
 
                             <i className={" material-icons"} onClick={handleZoom} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '18px' }}>zoom_out_map</i>
-                            <a href={"/blog/" + data[active].block_id} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>
+                            <a href={"/blog/" + data[active].block_url} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>
                                 <i className={" material-icons"} >fullscreen</i>
                             </a>
-                            <a rel="noreferrer" href={"/blog/" + data[active].block_id} target="_blank" style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '20px' }}>
+                            <a rel="noreferrer" href={"/blog/" + data[active].block_url} target="_blank" style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '20px' }}>
                                 <i className={" material-icons"} >open_in_new</i>
                             </a>
                             {data.length > 1 && <i className={" material-icons"} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>navigate_next</i>}

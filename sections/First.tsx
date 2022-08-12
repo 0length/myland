@@ -1,8 +1,9 @@
 import { Carousel } from "../components/Carousel";
-import { FadeStatus } from "../pages";
 import styles from '../styles/Home.module.css';
+import { PageWithData } from "./Blog";
 
-export const First = ({fadeStatus}: {fadeStatus: FadeStatus}) => {
+export const First = ({fadeStatus, data}: PageWithData) => {
+  if(!data) return location.reload();
     return <>
      {/* @ts-ignore */}
      <marquee className={styles.firsMarquee.concat(" ").concat("potritDisplayNone ")} behavior="" direction="left">{"Classy web developer who wants to learn, create, earn and share".toUpperCase()}</marquee>
@@ -10,7 +11,7 @@ export const First = ({fadeStatus}: {fadeStatus: FadeStatus}) => {
                 height: 80%;
               }`
               }</style>
-            <Carousel className={" ".concat(" "+fadeStatus)}/>
+            <Carousel data={data} className={" ".concat(" "+fadeStatus)}/>
             <div className={styles.firstImgContainer.concat(" ").concat("potritDisplayNone ")}>
               <img src="/photo/2.jpg" alt="" className={styles.firstImg.concat(" "+fadeStatus)} />
             </div>
