@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { First } from "../sections/First";
 import { Stat } from "../sections/Stat";
@@ -64,6 +64,29 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
 
     const [scrollState, setScrollState] = useState(0);
     const bodyRef = useRef(null);
+    const ActiveSection = sectionData[pageSection];
+    const handleSectionChange = useCallback(
+      ({ target }: any) => {
+        if (!target.dataset.section) return;
+        const currIdx = Object.keys(sectionData).indexOf(pageSection);
+        const nextIdx = Object.keys(sectionData).indexOf(
+          target.dataset.section
+        );
+        const oldGoDown = currIdx > nextIdx;
+        if (currIdx === nextIdx) return;
+        setFadeStatus(!oldGoDown ? "fadeOutUp" : "fadeOutDown");
+        setTimeout(() => {
+          history.pushState(
+            { page: `/${target.dataset.section}` },
+            target.innerText,
+            `/${target.dataset.section}`
+          );
+          setFadeStatus(!oldGoDown ? "fadeInUp" : "fadeInDown");
+          setPageSection(target.dataset.section);
+        }, 1000);
+      },
+      [pageSection]
+    );
     const handleScroll = debounce(
       useCallback(() => {
         if (!bodyRef.current) return;
@@ -105,33 +128,11 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
             });
         }
         setScrollState(containerScroll);
-      }, [pageSection, scrollState]),
+      }, [handleSectionChange, pageSection, scrollState]),
       1000
     );
 
-    const ActiveSection = sectionData[pageSection];
-    const handleSectionChange = useCallback(
-      ({ target }: any) => {
-        if (!target.dataset.section) return;
-        const currIdx = Object.keys(sectionData).indexOf(pageSection);
-        const nextIdx = Object.keys(sectionData).indexOf(
-          target.dataset.section
-        );
-        const oldGoDown = currIdx > nextIdx;
-        if (currIdx === nextIdx) return;
-        setFadeStatus(!oldGoDown ? "fadeOutUp" : "fadeOutDown");
-        setTimeout(() => {
-          history.pushState(
-            { page: `/${target.dataset.section}` },
-            target.innerText,
-            `/${target.dataset.section}`
-          );
-          setFadeStatus(!oldGoDown ? "fadeInUp" : "fadeInDown");
-          setPageSection(target.dataset.section);
-        }, 1000);
-      },
-      [pageSection]
-    );
+    
 
     useEffect(() => {
       // bodyRef.current && (bodyRef.current as any).addEventListener("scroll", handleScroll, { passive: true })
@@ -146,12 +147,13 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
       return () => {
         // bodyRef.current && (bodyRef.current as any).removeEventListener("scroll", handleScroll)
         menuRef.current &&
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           (menuRef.current as any).removeEventListener(
             "scroll",
             handleScrollMenuState
           );
       };
-    }, []);
+    }, [handleScrollMenuState]);
 
     useEffect(() => {
       document
@@ -163,7 +165,6 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
           ?.classList.add("active-menu");
       }
     }, [pageSection]);
-
 
     return (
       <div ref={bodyRef} className={styles.bodyContainer}>
@@ -185,14 +186,16 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
             <div className="menu">
               <img src="/logo.png" alt="" />
               <span ref={menuRef} className="potraitWidth60percent">
-                <a data-section={homePath} onClick={handleSectionChange}>
-                  Home
-                </a>
+                <Link href="/home">
+                  <a data-section={homePath} onClick={handleSectionChange}>
+                    Home
+                  </a>
+                </Link>
                 <a data-section={"stat"} onClick={handleSectionChange}>
                   Stats
                 </a>
                 <Link href="/blog">
-                  <a data-section={"blog"} >Blog</a>
+                  <a data-section={"blog"}>Blog</a>
                 </Link>
                 <a data-section={"about"} onClick={handleSectionChange}>
                   About
