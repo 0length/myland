@@ -3,7 +3,9 @@ import styles from '../styles/Home.module.css';
 import { PageWithData } from "./Blog";
 
 export const First = ({fadeStatus, data}: PageWithData) => {
-  if(!data) return location.reload();
+  if(!data) return <>{
+    location.reload()
+  }</>
     return <>
      {/* @ts-ignore */}
      <marquee className={styles.firsMarquee.concat(" ").concat("potritDisplayNone ")} behavior="" direction="left">{"Classy web developer who wants to learn, create, earn and share".toUpperCase()}</marquee>

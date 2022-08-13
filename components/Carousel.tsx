@@ -47,7 +47,10 @@ export const Carousel = ({ className, data }: { className: string, data: any }) 
                     <div className={styles.firstHighlightCarouselPosterContainerDiv}>
                         <img className={styles.firstHighlightCarouselPosterImg} src={data[active].img_url} style={!showOption ? { opacity: 1 } : { opacity: 0.15, zIndex: 1 }} />
                         <div className={styles.firstHighlightCarouselPosterImg.concat(" ").concat("option-icons")}>
-                            {data.length > 1 && <i className={" material-icons"} style={!showOption ? { opacity: 0.15 } : { opacity: 1, zIndex: 2 }}>navigate_before</i>}
+                            { active>0 && <i onClick={()=>{
+                                setActive((old)=>(old-1))
+                                clearTimeout(timer)
+                                }} className={" material-icons"} style={!showOption ? { opacity: 0.15 } : { opacity: 1, zIndex: 2 }}>navigate_before</i>}
 
                             <i className={" material-icons"} onClick={handleZoom} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '18px' }}>zoom_out_map</i>
                             <a href={"/blog/" + data[active].block_url} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>
@@ -56,7 +59,10 @@ export const Carousel = ({ className, data }: { className: string, data: any }) 
                             <a rel="noreferrer" href={"/blog/" + data[active].block_url} target="_blank" style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '20px' }}>
                                 <i className={" material-icons"} >open_in_new</i>
                             </a>
-                            {data.length > 1 && <i className={" material-icons"} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>navigate_next</i>}
+                            {active!==data.length && <i className={" material-icons"} onClick={()=>{
+                                setActive((old)=>(old+1))
+                                clearTimeout(timer)
+                                }} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>navigate_next</i>}
                         </div>
                     </div>
                 }
