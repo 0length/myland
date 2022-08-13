@@ -40,6 +40,7 @@ const fetchContent = async (url: string) => {
 
     return { page, content, author, block, firstChild };
   } catch (error) {
+    const block_id = block_id_not_found;
     const page = await notion.pages.retrieve({ page_id: block_id_not_found });
 
     const content = await await (
