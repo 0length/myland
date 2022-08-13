@@ -1,13 +1,14 @@
 import { Client } from "@notionhq/client";
 import { CreatePage } from "..";
 const FIRST_PATH = "blog";
-export const notion = new Client({
+export const createNotionInstance = ()=>new Client({
   auth:
     process.env.NOTION_TOKEN ||
     "secret_KqlbkdS08YJ1y9U4u2HAUrzmIty4Ve023OZp87yuSXw",
 });
 export const toBlockId = (a: string) => a.split("-")[a.split("-").length - 1];
 const fetchContent = async (url: string) => {
+  const notion = createNotionInstance();
   const block_id_not_found = toBlockId(
     "404-Not-Found-8da10e78ecef4bf88140fd17b60e8379"
   );

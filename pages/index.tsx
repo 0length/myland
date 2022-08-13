@@ -187,7 +187,7 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
               <img src="/logo.png" alt="" />
               <span ref={menuRef} className="potraitWidth60percent">
                 <Link href="/home">
-                  <a data-section={homePath} onClick={handleSectionChange}>
+                  <a data-section={homePath}>
                     Home
                   </a>
                 </Link>
