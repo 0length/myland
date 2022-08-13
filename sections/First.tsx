@@ -14,6 +14,7 @@ export const First = ({ fadeStatus, data }: PageWithData) => {
         direction="left"
       >
         {"Classy web developer who wants to learn, create, earn and share".toUpperCase()}
+      {/* @ts-ignore */}
       </marquee>
       <style>{`section{
                 height: 80%;

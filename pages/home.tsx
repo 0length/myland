@@ -17,7 +17,7 @@ export const fetchHighlights = async ()=>{
         block_id:toPageID("highlights-8bec591dfbd54e5e8fd4cbdc0696eeea"),
     });
 
-    return Promise.all(highlightDb.results.map(async ({link_to_page:{page_id}})=>{
+    return Promise.all(highlightDb.results.map(async ({link_to_page:{page_id}}: any)=>{
         const page: any = await notion.pages.retrieve({page_id});
         const block_url = page.url.split("https://www.notion.so/").join("")
         const firstChild: any = await notion.blocks.children.list({
