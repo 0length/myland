@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import styles from '../styles/Carousel.module.css'
 import { TimeDisplay } from "./TimeDisplay";
 let timer: any, animate: any;
@@ -40,31 +40,32 @@ export const Carousel = ({ className, data }: { className: string, data: any }) 
         (modalContent as any).src = data[active].img_url;
     }, [active]);
 
+
     return (<div className={styles.firstHighlightCarouselWrapper.concat(" ").concat("potrait100percent potraitPaddingTop25vh").concat(" " + className)}>
         <div className={styles.firstHighlightCarouselContainer.concat(" ").concat("potrait100percent")}>
             <div className={styles.firstHighlightCarouselPosterContainer.concat(" ").concat("potraitHeight50vw")} onMouseOver={() => setShowOption(true)} onMouseOut={() => setShowOption(false)}>
                 {
-                    <div className={styles.firstHighlightCarouselPosterContainerDiv}>
-                        <img className={styles.firstHighlightCarouselPosterImg} src={data[active].img_url} style={!showOption ? { opacity: 1 } : { opacity: 0.15, zIndex: 1 }} />
-                        <div className={styles.firstHighlightCarouselPosterImg.concat(" ").concat("option-icons")}>
-                            { active>0 && <i onClick={()=>{
-                                setActive((old)=>(old-1))
-                                clearTimeout(timer)
-                                }} className={" material-icons"} style={!showOption ? { opacity: 0.15 } : { opacity: 1, zIndex: 2 }}>navigate_before</i>}
-
-                            <i className={" material-icons"} onClick={handleZoom} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '18px' }}>zoom_out_map</i>
-                            <a href={"/blog/" + data[active].block_url} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>
-                                <i className={" material-icons"} >fullscreen</i>
-                            </a>
-                            <a rel="noreferrer" href={"/blog/" + data[active].block_url} target="_blank" style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '20px' }}>
-                                <i className={" material-icons"} >open_in_new</i>
-                            </a>
-                            {active!==data.length && <i className={" material-icons"} onClick={()=>{
-                                setActive((old)=>(old+1))
-                                clearTimeout(timer)
-                                }} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>navigate_next</i>}
-                        </div>
-                    </div>
+                   <div className={styles.firstHighlightCarouselPosterContainerDiv}>
+                   <img className={styles.firstHighlightCarouselPosterImg} src={data[active].img_url} style={!showOption ? { opacity: 1 } : { opacity: 0.15, zIndex: 1 }} />
+                   <div className={styles.firstHighlightCarouselPosterImg.concat(" ").concat("option-icons")}>
+                       { active>0 && <i onClick={()=>{
+                           setActive((old)=>(old-1))
+                           clearTimeout(timer)
+                           }} className={" material-icons"} style={!showOption ? { opacity: 0.15 } : { opacity: 1, zIndex: 2 }}>navigate_before</i>}
+                   
+                       <i className={" material-icons"} onClick={handleZoom} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '18px' }}>zoom_out_map</i>
+                       <a href={"/blog/" + data[active].block_url} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>
+                           <i className={" material-icons"} >fullscreen</i>
+                       </a>
+                       <a rel="noreferrer" href={"/blog/" + data[active].block_url} target="_blank" style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '20px' }}>
+                           <i className={" material-icons"} >open_in_new</i>
+                       </a>
+                       {active!==(data.length-1) && <i className={" material-icons"} onClick={()=>{
+                           setActive((old)=>(old+1))
+                           clearTimeout(timer)
+                           }} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>navigate_next</i>}
+                   </div>
+                   </div>
                 }
             </div>
             <div className={styles.firstHighlightCarouselPosterTitle}>
