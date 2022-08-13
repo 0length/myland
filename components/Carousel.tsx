@@ -8,7 +8,6 @@ let animateDurPlain = 2;
 let animateDurMS = animateDurPlain * 1000;
 
 export const Carousel = ({ className, data }: { className: string, data: any }) => {
-
     const [active, setActive] = useState<number>(0);
     const [showOption, setShowOption] = useState(false);
 
@@ -39,7 +38,8 @@ export const Carousel = ({ className, data }: { className: string, data: any }) 
         (modalContainer as any).style.display = "block";
         (modalContent as any).src = data[active].img_url;
     }, [active]);
-
+    
+    if(!data) return <>No record Found!</>;
 
     return (<div className={styles.firstHighlightCarouselWrapper.concat(" ").concat("potrait100percent potraitPaddingTop25vh").concat(" " + className)}>
         <div className={styles.firstHighlightCarouselContainer.concat(" ").concat("potrait100percent")}>
