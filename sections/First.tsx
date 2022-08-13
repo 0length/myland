@@ -4,7 +4,7 @@ import { PageWithData } from "./Blog";
 
 export const First = ({fadeStatus, data}: PageWithData) => {
   if(!data) return <>{
-    location.reload()
+    typeof location !== undefined && location.reload()
   }</>
     return <>
      {/* @ts-ignore */}
