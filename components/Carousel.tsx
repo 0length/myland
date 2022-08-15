@@ -1,27 +1,44 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
-import styles from '../styles/Carousel.module.css'
+import React, { useCallback, useEffect, useState } from "react";
+import styles from '../styles/Carousel.module.css';
 import { TimeDisplay } from "./TimeDisplay";
+import {motion, useAnimationControls} from 'framer-motion';
 let timer: any, animate: any;
 
-let timeout = 5000;
-let animateDurPlain = 2;
-let animateDurMS = animateDurPlain * 1000;
+const TIMEOUT = 5000;
 
 export const Carousel = ({ className, data }: { className: string, data: any }) => {
     const [active, setActive] = useState<number>(0);
     const [showOption, setShowOption] = useState(false);
+    const controls = useAnimationControls();
+    const text = useAnimationControls();
+    const handleCleanUp = ()=>{
+        if(animate && timer){
+            clearInterval(animate);
+            clearInterval(timer);
+            animate = undefined;
+            timer = undefined;
+        }
+    }
+    const handleFirstInterval = ()=>{
+        handleCleanUp();
+        animate = setInterval(() => {
+            controls.start({ scale: 0.95, transitionTimingFunction:"ease-in-out",transitionDuration: '0.1s'});
+            text.start({ opacity: 0});
+        }, TIMEOUT-200);
+        timer = setInterval(() => {
+            setActive(active + 1 === data.length ? 0 : active + 1);
+        }, TIMEOUT);
+    }
 
     useEffect(() => {
+        return handleCleanUp();
+    }, []);
 
-        // animate = setTimeout(() => {
-
-        // }, timeout-animateDurMS);
-
-        timer = setTimeout(() => {
-            setActive(active + 1 === data.length ? 0 : active + 1);
-        }, timeout);
-
-    }, [active]);
+    useEffect(()=>{
+        controls.start({ scale: 1,transitionTimingFunction:"ease-in-out", transitionDuration: '0.1s'});
+        text.start({ opacity: 1});
+        handleFirstInterval();
+    }, [active])
 
     useEffect(() => {
         () => {
@@ -45,12 +62,18 @@ export const Carousel = ({ className, data }: { className: string, data: any }) 
         <div className={styles.firstHighlightCarouselContainer.concat(" ").concat("potrait100percent")}>
             <div className={styles.firstHighlightCarouselPosterContainer.concat(" ").concat("potraitHeight50vw")} onMouseOver={() => setShowOption(true)} onMouseOut={() => setShowOption(false)}>
                 {
-                   <div className={styles.firstHighlightCarouselPosterContainerDiv}>
-                   <img className={styles.firstHighlightCarouselPosterImg} src={data[active].img_url} style={!showOption ? { opacity: 1 } : { opacity: 0.15, zIndex: 1 }} />
+                   <div
+                        className={styles.firstHighlightCarouselPosterContainerDiv}
+                    >
+                   <motion.img
+                   onMouseOver={handleCleanUp}
+                   onMouseOut={handleFirstInterval}
+                   animate={controls}
+                   className={styles.firstHighlightCarouselPosterImg} src={data[active].img_url} style={!showOption ? { opacity: 1 } : { opacity: 0.15, zIndex: 1 }} />
                    <div className={styles.firstHighlightCarouselPosterImg.concat(" ").concat("option-icons")}>
                        { active>0 && <i onClick={()=>{
                            setActive((old)=>(old-1))
-                           clearTimeout(timer)
+                        //    clearInterval(timer)
                            }} className={" material-icons"} style={!showOption ? { opacity: 0.15 } : { opacity: 1, zIndex: 2 }}>navigate_before</i>}
                    
                        <i className={" material-icons"} onClick={handleZoom} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2, fontSize: '18px' }}>zoom_out_map</i>
@@ -62,13 +85,15 @@ export const Carousel = ({ className, data }: { className: string, data: any }) 
                        </a>
                        {active!==(data.length-1) && <i className={" material-icons"} onClick={()=>{
                            setActive((old)=>(old+1))
-                           clearTimeout(timer)
+                        //    clearInterval(timer)
                            }} style={!showOption ? { opacity: 0 } : { opacity: 1, zIndex: 2 }}>navigate_next</i>}
                    </div>
                    </div>
                 }
             </div>
-            <div className={styles.firstHighlightCarouselPosterTitle}>
+            <motion.div
+            animate={text}
+            className={styles.firstHighlightCarouselPosterTitle}>
                 <h1>
                     {data[active].title}
                 </h1>
@@ -77,7 +102,7 @@ export const Carousel = ({ className, data }: { className: string, data: any }) 
                         <TimeDisplay time={data[active].date} />
                     </h3>
                 </div>
-            </div>
+            </motion.div>
             <div className={styles.firstHighlightCarouselPagingConteiner}>
             </div>
         </div>
