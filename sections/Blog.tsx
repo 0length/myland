@@ -8,6 +8,7 @@ import { TimeDisplay } from "../components/TimeDisplay";
 import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export type PageWithData = { fadeStatus: FadeStatus; data: any };
 function shareOnFacebook() {
@@ -27,8 +28,10 @@ function shareOnLinkedin() {
 }
 export const Blog = ({ fadeStatus, data }: PageWithData) => {
   const { route } = useRouter();
-  if(!data) return <span style={{ alignSelf: "center" }}>{"Cooming Soon!"}</span>;
-  const postTitle = data.firstChild.results[0].heading_1.rich_text[0].text.content;
+  if (!data)
+    return <span style={{ alignSelf: "center" }}>{"Cooming Soon!"}</span>;
+  const postTitle =
+    data.firstChild.results[0].heading_1.rich_text[0].text.content;
   const postCover = data.page.cover.external.url;
 
   return (
@@ -42,74 +45,69 @@ export const Blog = ({ fadeStatus, data }: PageWithData) => {
         width: "100%",
       }}
     >
-      
-        <>
-          <Head>
-            <title>{data.block.child_page.title}</title>
-            <meta
-              name="description"
-              content={
-                postTitle
-              }
-            />
-            <meta
-              property="og:title"
-              content={
-                postTitle
-              }
-            />
-            <meta property="og:type" content="website" />
-            <meta property="og:url" content={route} />
-            <meta property="og:image" content={postCover} />
-            <meta
-              name="twitter:title"
-              content={data.block.child_page.title}
-            />
-            <meta
-              name="twitter:description"
-              content={
-                postTitle
-              }            />
-            <meta
-              name="twitter:image"
-              content={postCover}
-            />
-            <meta name="twitter:card" content="summary_large_image"></meta>
-          </Head>
-          <div
-            className="notion-cover"
-            style={{
-              background: `url('${postCover}') no-repeat center center fixed`,
-            }}
-          ></div>
-          <div className="post-header">
-            <div className="author">
-              <div className="author-avatar">
-                <img alt="" src={data.author.avatar_url} />
-              </div>
-              <div className="author-detail">
-                <div className="author-name">{data.author.name}</div>
-                <div className="post-date">
-                  <TimeDisplay time={data.page.created_time} />
-                </div>
-              </div>
+      <>
+        <Head>
+          <title>{data.block.child_page.title}</title>
+          <meta name="description" content={postTitle} />
+          <meta property="og:title" content={postTitle} />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={route} />
+          <meta property="og:image" content={postCover} />
+          <meta name="twitter:title" content={data.block.child_page.title} />
+          <meta name="twitter:description" content={postTitle} />
+          <meta name="twitter:image" content={postCover} />
+          <meta name="twitter:card" content="summary_large_image"></meta>
+        </Head>
+        <div className="bread-crumb">
+          {data.block.parent.type === "page_id" ? (
+            <Link href={`/${data.block.parent.page_id.split("-").join("")}`} replace>
+              <a onClick={()=>{
+                 history.pushState(
+                  { page:`/${data.block.parent.page_id.split("-").join("")}` },
+                  data.block.parent_page_title,
+                  `/${data.block.parent.page_id.split("-").join("")}`
+                );
+              }}>{data.block.parent_page_title}</a>
+            </Link>
+          ) : (
+            data.block.parent_page_title
+          )}
+          / <a >{data.block.child_page.title}</a>
+        </div>
+        <div
+          className="notion-cover"
+          style={{
+            background: `url('${postCover}') no-repeat center center fixed`,
+          }}
+        ></div>
+        <div className="post-header">
+          <div className="author">
+            <div className="author-avatar">
+              <img alt="" src={data.author.avatar_url} />
             </div>
-            <div className="share">
-              <div className="social">
-                <span onClick={shareOnTwitter}>
-                  <FaTwitter />
-                </span>
-                <span onClick={shareOnFacebook}>
-                  <FaFacebookF />
-                </span>
-                <span onClick={shareOnLinkedin}>
-                  <FaLinkedin />
-                </span>
+            <div className="author-detail">
+              <div className="author-name">{data.author.name}</div>
+              <div className="post-date">
+                <TimeDisplay time={data.page.created_time} />
               </div>
             </div>
           </div>
-          <NotionRenderer blockMap={data.content} />
-        </>
+          <div className="share">
+            <div className="social">
+              <span onClick={shareOnTwitter}>
+                <FaTwitter />
+              </span>
+              <span onClick={shareOnFacebook}>
+                <FaFacebookF />
+              </span>
+              <span onClick={shareOnLinkedin}>
+                <FaLinkedin />
+              </span>
+            </div>
+          </div>
+        </div>
+        <NotionRenderer blockMap={data.content} />
+      </>
     </div>
   );
 };

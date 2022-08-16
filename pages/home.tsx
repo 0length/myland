@@ -1,5 +1,5 @@
 import { CreatePage } from ".";
-import { createNotionInstance, toBlockId } from "./blog/[slug]";
+import { createNotionInstance, toBlockId } from "./[slug]";
 
 
 (String.prototype as any).insert = function(index: number, string: string) {

@@ -79,8 +79,9 @@ header>.container>.menu {
   display: flex;
   justify-content: left;
 }
-
-
+samp{
+  text-align: center;
+}
 
 header>.container>.menu a {
   padding: 15px 20px;
@@ -103,7 +104,7 @@ section {
   background-color: rgb(24, 25, 40);
   background-color: #1a1b27;
   width: 100%;
-  padding: 5vw 0;
+  /* padding: 5vw 0; */
   /* position: relative; */
   margin-top: 100px;
 }
@@ -312,8 +313,13 @@ code>img {
  color: rgba(137, 221, 255, 0.4)
 }
 
-.stats > *{
+.stats > *, .avatar > *{
   margin: 10px;
+  font-family: monospace;
+  
+}
+.contribution code > img, .contribution code > svg {
+  margin: 0 18px;
 }
 
 section .notion, section .notion-cover {
@@ -377,4 +383,16 @@ section .avatar {
 .share span{
   padding: 10px 10px;
   cursor: pointer;
+}
+.bread-crumb {
+  width: 100%;
+  padding: 18px;
+}
+.bread-crumb a{
+padding: 0 9px;
+
+}
+
+.notion-page-text {
+  color: white;
 }

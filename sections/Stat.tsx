@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { FadeStatus } from "../pages"
-import { Contribution } from "./Contribution"
 
 export const Stat = ({ fadeStatus }: { fadeStatus: FadeStatus }) => {
 
@@ -10,6 +9,5 @@ export const Stat = ({ fadeStatus }: { fadeStatus: FadeStatus }) => {
         </h2>
     <img width={"50%"} className={fadeStatus}  src="https://github-readme-stats.vercel.app/api?username=0length&show_icons=true&theme=tokyonight" />
     <img width={"50%"} className={fadeStatus}  src="https://github-readme-stats.vercel.app/api/top-langs/?username=0length&langs_count=10&layout=compact&theme=tokyonight" />
-    <Contribution fadeStatus={fadeStatus} />
   </div>
 }
