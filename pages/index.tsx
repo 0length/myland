@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { First } from "../sections/First";
-import { Stat } from "../sections/Stat";
+import { Stats } from "../sections/Stats";
 import { Blog } from "../sections/Blog";
 import { About } from "../sections/About";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import Link from "next/link";
 const homePath = "home";
 const sectionData = {
   [homePath]: First,
-  stat: Stat,
+  stats: Stats,
   blog: Blog,
   about: About,
 };
@@ -191,7 +191,7 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
                     Home
                   </a>
                 </Link>
-                <a data-section={"stat"} onClick={handleSectionChange}>
+                <a data-section={"stats"} onClick={handleSectionChange}>
                   Stats
                 </a>
                 <Link href="/blog">

@@ -1,4 +1,4 @@
 import { CreatePage } from ".";
 
-const Stat = CreatePage("stat")
+const Stat = CreatePage("stats")
 export default Stat

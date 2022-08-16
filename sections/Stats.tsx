@@ -1,9 +1,9 @@
 import React from "react"
 import { FadeStatus } from "../pages"
 
-export const Stat = ({ fadeStatus }: { fadeStatus: FadeStatus }) => {
+export const Stats = ({ fadeStatus }: { fadeStatus: FadeStatus }) => {
 
-  return <div className={"stats "+fadeStatus} style={{ display: "flex", alignItems: "center", flexDirection: 'column', justifyContent: "center", height: "120%", width: "100%", padding: "10% 10%" }}>
+  return <div className={"stats "+fadeStatus} style={{ display: "flex", alignItems: "center", flexDirection: 'column', justifyContent: "center", height: "120%", width: "100%", padding: "5% 10%" }}>
        <h2 className={(" " + fadeStatus)}>
                Github Statistic
         </h2>

@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import { unified } from "unified";
 import Head from "next/head";
 import { Contribution } from "./Contribution";
+import { motion } from "framer-motion";
 
 export const retrieveReadme = async () => {
   const md = await await (
@@ -43,13 +44,15 @@ export const About = ({ fadeStatus, data }: PageWithData) => {
         <meta name="description" content="About me and how to contact me." />
       </Head>
       <div className="avatar">
-        <img
+        <motion.img
           className={fadeStatus}
           style={{ borderRadius: "50% 50%" }}
           alt=""
           width="260"
           height="260"
+          initial={{border: "0px solid rgba(157,219,251, 1)"}}
           src="https://avatars.githubusercontent.com/u/31953472?v=4"
+          animate={{border:"10px solid rgba(157,219,251, 1)", transitionDelay: "1s", transitionTimingFunction:"ease-in-out"}}
         />
       </div>
       <div
