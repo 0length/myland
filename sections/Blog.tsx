@@ -28,12 +28,26 @@ function shareOnLinkedin() {
 }
 export const Blog = ({ fadeStatus, data }: PageWithData) => {
   const { route } = useRouter();
+  useEffect(() => {
+    document.querySelectorAll(".notion-table td").forEach((i, idx) => {
+      if (idx == 0 && i.innerHTML.indexOf(",") > 0) {
+        i.innerHTML = `${[...i.innerHTML.split(",")]
+          .map((i) => {
+            return "<a class='tag'>#" + i + "</a>";
+          })
+          .join("")}`;
+        (i as any).setAttribute("colspan", "2");
+      }
+      if (idx == 1) {
+        (i as any).style.display = "none";
+      }
+    });
+  }, []);
   if (!data)
     return <span style={{ alignSelf: "center" }}>{"Cooming Soon!"}</span>;
   const postTitle =
     data.firstChild.results[0].heading_1.rich_text[0].text.content;
   const postCover = data.page.cover.external.url;
-
   return (
     <div
       className={fadeStatus}
@@ -60,19 +74,28 @@ export const Blog = ({ fadeStatus, data }: PageWithData) => {
         </Head>
         <div className="bread-crumb">
           {data.block.parent.type === "page_id" ? (
-            <Link href={`/${data.block.parent.page_id.split("-").join("")}`} replace>
-              <a onClick={()=>{
-                 history.pushState(
-                  { page:`/${data.block.parent.page_id.split("-").join("")}` },
-                  data.block.parent_page_title,
-                  `/${data.block.parent.page_id.split("-").join("")}`
-                );
-              }}>{data.block.parent_page_title}</a>
+            <Link
+              href={`/${data.block.parent.page_id.split("-").join("")}`}
+              replace
+            >
+              <a
+                onClick={() => {
+                  history.pushState(
+                    {
+                      page: `/${data.block.parent.page_id.split("-").join("")}`,
+                    },
+                    data.block.parent_page_title,
+                    `/${data.block.parent.page_id.split("-").join("")}`
+                  );
+                }}
+              >
+                {data.block.parent_page_title}
+              </a>
             </Link>
           ) : (
             data.block.parent_page_title
           )}
-          / <a >{data.block.child_page.title}</a>
+          / <a>{data.block.child_page.title}</a>
         </div>
         <div
           className="notion-cover"

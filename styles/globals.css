@@ -396,3 +396,115 @@ padding: 0 9px;
 .notion-page-text {
   color: white;
 }
+
+
+table {
+  border: 1px solid transparent;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  /* background-color: #f8f8f8; */
+  border: 1px solid transparent;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid transparent;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid transparent;
+    display: block;
+    font-size: .8em;
+    text-align: center;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+.notion-table {
+  white-space: inherit !important;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+.notion-table td :nth-child(1){
+
+}
+.notion-table td {
+  /* word-wrap: break-word; */
+  height: fit-content;
+  word-spacing: 1px;
+  line-height: 10px;
+}
+
+
+.tag {
+  border-radius: 3px 3px;
+  display: inline-block;
+  padding: 5px 10px;
+  position: relative;
+  margin: 5px;
+  text-decoration: none;
+  transition: color 0.2s;
+  color: white;
+  cursor: pointer;
+}
