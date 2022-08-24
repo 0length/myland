@@ -63,7 +63,7 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
     const [fadeStatus, setFadeStatus] = useState<FadeStatus>("fadeInUp");
 
     const [scrollState, setScrollState] = useState(0);
-    const bodyRef = useRef(null);
+    const bodyRef = useRef<HTMLDivElement>(null);
     const ActiveSection = sectionData[pageSection];
     const handleSectionChange = useCallback(
       ({ target }: any) => {
@@ -166,6 +166,25 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
       }
     }, [pageSection]);
 
+    useEffect(() => {
+        if( typeof window != "undefined" && bodyRef.current) {
+          const handleScroll = ({ target }: any) => {
+            if(bodyRef.current!.scrollTop>50){
+              (document.querySelector('header')! as HTMLDivElement).style.display = "none";
+            }else{
+              (document.querySelector('header')! as HTMLDivElement).style.display = "block";
+            }
+          };
+          bodyRef.current&&
+            bodyRef.current!.addEventListener('scroll', handleScroll);
+            return () =>{
+              bodyRef.current&&
+              bodyRef.current!.removeEventListener('scroll', handleScroll);
+            }
+          }
+      }, [typeof window != "undefined" && bodyRef.current]);
+    
+
     return (
       <div ref={bodyRef} className={styles.bodyContainer}>
         <Head>
@@ -194,7 +213,7 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
                 <a data-section={"stats"} onClick={handleSectionChange}>
                   Stats
                 </a>
-                <Link href="/blog">
+                <Link href="/Blogs-dd6f007c71ce4628bb38f832ebc10a9e">
                   <a data-section={"blog"}>Blog</a>
                 </Link>
                 <a data-section={"about"} onClick={handleSectionChange}>

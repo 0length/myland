@@ -42,6 +42,13 @@ export const About = ({ fadeStatus, data }: PageWithData) => {
       <Head>
         <title>{"About Me"}</title>
         <meta name="description" content="About me and how to contact me." />
+        <style>{
+          `
+          section {
+            padding: 100px 0;
+          }
+          `
+          }</style>
       </Head>
       <div className="avatar">
         <motion.img
@@ -52,7 +59,7 @@ export const About = ({ fadeStatus, data }: PageWithData) => {
           height="260"
           initial={{border: "0px solid rgba(157,219,251, 1)"}}
           src="https://avatars.githubusercontent.com/u/31953472?v=4"
-          animate={{border:"10px solid rgba(157,219,251, 1)", transitionDelay: "1s", transitionTimingFunction:"ease-in-out"}}
+          animate={{border:"6px solid rgba(157,219,251, 0.4)", transitionDelay: "1s", transitionTimingFunction:"ease-in-out"}}
         />
       </div>
       <div

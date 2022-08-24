@@ -84,6 +84,8 @@ Blog.getInitialProps = async (ctx): Promise<{}> => {
   const props: { [index: string]: any } = {};
   if (typeof window === "undefined" && ctx.req?.url) {
     props.data = await fetchContent(ctx.req.url);
+    // console.log(props.data.content, "data.content")
+
   } else {
     console.log(ctx, "ctx")
     props.data = (await (await fetch("/api/".concat(ctx.asPath!.split("/")[1]))).json()).data
