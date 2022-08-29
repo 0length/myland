@@ -316,6 +316,10 @@ code>img {
  color: rgba(137, 221, 255, 0.4)
 }
 
+.stats h2{
+  margin-bottom: 100px;
+}
+
 .stats > *, .avatar > *{
   margin: 10px;
   color: hightlight;
@@ -444,6 +448,10 @@ table th {
 @media screen and (max-width: 600px) {
   .stats{
     margin-top: 100px;
+  }
+
+  .stats img{
+    width: 100%;
   }
 
   
