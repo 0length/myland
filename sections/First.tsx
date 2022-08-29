@@ -13,7 +13,7 @@ export const First = ({ fadeStatus, data }: PageWithData) => {
         behavior=""
         direction="left"
       >
-        {"Classy web developer who wants to learn, create, earn and share".toUpperCase()}
+        {"Classy web developer who wants to learn, earn, create and share".toUpperCase()}
       {/* @ts-ignore */}
       </marquee>
       <style>{`section{

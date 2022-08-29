@@ -30,12 +30,12 @@ export const Stats = ({ fadeStatus }: { fadeStatus: FadeStatus }) => {
         <img
           width={"50%"}
           className={fadeStatus}
-          src="https://github-readme-stats.vercel.app/api?username=0length&show_icons=true&theme=tokyonight"
+          src="https://github-readme-stats.vercel.app/api?username=0length&show_icons=true&theme=tokyonight&hide_border=1&locale=en&border_radius=15"
         />
         <img
           width={"50%"}
           className={fadeStatus}
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=0length&langs_count=10&layout=compact&theme=tokyonight"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=0length&langs_count=10&layout=compact&theme=tokyonight&hide_border=1&locale=en&border_radius=15"
         />
       </div>
     </>
