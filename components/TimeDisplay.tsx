@@ -7,7 +7,7 @@ export const TimeDisplay = ({ time }: { time: string }) => {
   
     useEffect(() => {
         setCurrentTime(timeDifferenceForDate(timeWithT));
-    }, [currentTime]);
+    }, [timeWithT]);
 
   
     return <>{currentTime}</>
