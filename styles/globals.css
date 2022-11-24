@@ -337,7 +337,7 @@ code>img {
   margin: 0 18px;
 }
 
-section .notion-bookmark>div {
+section .notion-bookmark>div:first-child {
 color: white;
 }
 
