@@ -336,9 +336,11 @@ code>img {
 .contribution code > img, .contribution code > svg {
   margin: 0 18px;
 }
-section .notion a{
- color: white !important;
+
+section .notion-bookmark>div {
+color: white;
 }
+
 section .notion, section .notion-cover {
   width: 90%;
   color: white;
