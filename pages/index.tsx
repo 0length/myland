@@ -217,7 +217,7 @@ export const CreatePage: (initPage: keyof typeof sectionData) => NextPage = (
                   <a data-section={"blog"}>Blog</a>
                 </Link>
                 <Link href="/Shop-ae00562bcb4f4f3ab1c1d5d0353f3a0d">
-                  <a data-section={"blog"}>Shop</a>
+                  <a data-section={"shop"}>Shop</a>
                 </Link>
                 <a data-section={"about"} onClick={handleSectionChange}>
                   About
