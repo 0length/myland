@@ -337,9 +337,9 @@ code>img {
   margin: 0 18px;
 }
 
-section .notion-bookmark>div:first-child {
+/* section .notion-bookmark>div:first-child {
 color: white;
-}
+} */
 
 section .notion, section .notion-cover {
   width: 90%;
