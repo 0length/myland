@@ -97,12 +97,12 @@ export const Carousel = ({ className, data }: { className: string, data: any }) 
                 <h1>
                     {data[active].title}
                 </h1>
+            </motion.div>
                 <div className={styles.firstHighlightCarouselPosterTitleDate}>
                     <h3>
                         <TimeDisplay time={data[active].date} />
                     </h3>
                 </div>
-            </motion.div>
             <div className={styles.firstHighlightCarouselPagingConteiner}>
             </div>
         </div>
