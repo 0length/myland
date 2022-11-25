@@ -367,7 +367,7 @@ section .avatar {
 }
 .author {
   display: flex;
-  width: 50%;
+  width: 30%;
 }
 .author-avatar {
   display: inline-block;
@@ -408,8 +408,13 @@ section .avatar {
   padding: 18px;
 }
 .bread-crumb a{
-padding: 0 0px;
+padding: 0 9px;
+
 }
+
+.bread-crumb a:first-child{
+  padding: 0 9px;
+  }
 
 .notion-page-text {
   color: white;
@@ -504,6 +509,13 @@ table th {
   table td:last-child {
     border-bottom: 0;
   }
+  .bread-crumb a{
+    padding: 0 0px;
+    }
+
+    .author {
+      width: 30%;
+    }
 }
 
 
