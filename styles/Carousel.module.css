@@ -54,18 +54,18 @@ top: 5vw;
 .firstHighlightCarouselPosterTitle h1{
   font-weight: 500;
   width: 100%;
+  text-align: center;
 }
 
 .firstHighlightCarouselPosterTitleDate{
   opacity: 0.7;
-  /* align-self: center; */
   width: 35%;
   min-width: 100px;
 }
 
 .firstHighlightCarouselPosterTitleDate > h3{
   margin: auto 0;
-
+text-align: center;
 }
 
 .firstHighlightCarouselPosterImg {
