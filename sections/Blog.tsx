@@ -28,6 +28,7 @@ function shareOnLinkedin() {
 }
 export const Blog = ({ fadeStatus, data }: PageWithData) => {
   const { route } = useRouter();
+  console.log(data)
   useEffect(() => {
     document.querySelectorAll(".notion-table td").forEach((i, idx) => {
       if (idx == 0 && i.innerHTML.indexOf(",") > 0) {
